@@ -1,0 +1,63 @@
+body{
+    
+    background-image: url("../img/bicicletas.jpg");
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px;
+}
+
+div.espaciador{
+    padding: 30px;
+}
+
+form#form1 {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid white 2px;
+    border-radius: 15px;
+    padding-bottom: 10px;
+}
+.bAcceso{
+    text-align: center;
+}
+h2{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+#navegador ul{
+    
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    text-align: center;
+ }
+ #navegador li{
+    display: inline;
+    text-align: center;
+
+ }
+
+ #navegador{
+    background: black;
+    padding: 10px;
+    margin: 0;
+ }
+
+ #navegador li a {
+    color: white;
+    /* background-color: black;
+    border: 1px solid #ccc; */
+    text-decoration: none;
+ }
+ #navegador li a:hover{
+    background-color: greenyellow;
+    color: #ffffff;
+ }
+ 
