@@ -3,10 +3,15 @@
 session_start();
 
 
+include_once "consts.php";
+
 include_once "functions/functions.php";
 
 
-
+if (isset($_SESSION['rol'])) {
+    
+        header("location:paginas/menu.php");
+}
 
 ?>
 
@@ -17,7 +22,7 @@ include_once "functions/functions.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php echo VERSION; ?></title>
     <link rel="stylesheet" href="recursos/css/style.css ">
 </head>
 
@@ -52,8 +57,10 @@ include_once "functions/functions.php";
 
     </form>
 
-
     <?php
+        if (isset($_SESSION["fallo"])) {
+            echo '<h1 style="color:red;text-align:center;">Fallo de autenticación</h1>';
+        }
 
     if (isset($_POST["acceder"])) {
 
@@ -65,18 +72,12 @@ include_once "functions/functions.php";
         // echo $_SERVER['PHP_SELF'];
 
 
-        //    header("Location: index.php");
+
+        header("Location: index.php");
     }
 
-    if (isset($_SESSION['rol'])) {
-        if (($_SESSION["rol"]) == "Administrador") {
-            header("location:menu.php");
-            echo "";
-        }
-    }
 
     ?>
 </body>
-
 
 </html>

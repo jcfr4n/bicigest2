@@ -1,7 +1,5 @@
 <?php
 
-include_once "recursos/consts.php ";
-
 function conectarDB(){
         
 
@@ -45,16 +43,15 @@ function validar($user, $pass)
 
 
        
+    }else{
+        $_SESSION["fallo"] = "1";
     }
 
     desconectarDB($conn);
 
 }
 
-function logout(){
-    session_destroy();
-    return "index.php";
-}
+
 
 function mostrarUsuarios(){
 
