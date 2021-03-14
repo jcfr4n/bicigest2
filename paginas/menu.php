@@ -6,6 +6,7 @@ include_once "../consts.php"
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,14 +15,11 @@ include_once "../consts.php"
     <link rel="stylesheet" href="../recursos/css/style.css">
 
 </head>
+
 <body>
-<?php include_once "header.php"; ?>
+    <?php include_once "header.php"; ?>
 
 
-
-    
-    
 </body>
+
 </html>
-
-

@@ -57,3 +57,9 @@ div.navegador li a:hover {
   background-color: rgb(143, 143, 143);
   color: #ffffff;
 }
+table#t1 {
+  background: whitesmoke;
+  display: table;
+  margin: auto;
+}
+
