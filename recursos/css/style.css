@@ -22,6 +22,36 @@ form#form1 {
   border-radius: 15px;
   padding-bottom: 10px;
 }
+form#agregar {
+  background: gray;
+  display: flex;
+  margin: 0 auto;
+  width: 35%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid white 2px;
+  border-radius: 15px;
+  padding-bottom: 10px;
+}
+form#editar {
+  background: gray;
+  display: flex;
+  margin: 0 auto;
+  width: 35%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid white 2px;
+  border-radius: 15px;
+  padding-bottom: 10px;
+}
+form#agregar h2 {
+  padding: 10px 0;
+}
+form#editar h2 {
+  padding: 10px 0;
+}
 .bAcceso {
   text-align: center;
 }
@@ -61,5 +91,11 @@ table#t1 {
   background: whitesmoke;
   display: table;
   margin: auto;
+  margin-bottom: 10px;
 }
-
+div.mensaje {
+  background: black;
+  text-align: center;
+  margin: auto;
+  color: red;
+}

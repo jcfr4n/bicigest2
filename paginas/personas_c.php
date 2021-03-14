@@ -20,6 +20,7 @@ if ((!isset($_SESSION["rol"]) || ($_SESSION['rol'] != "Administrador"))) {
 </head>
 
 <body>
+
     <?php
     include_once "header_admin.php";
     echo '<div class="espaciador"></div>';
@@ -70,22 +71,61 @@ if ((!isset($_SESSION["rol"]) || ($_SESSION['rol'] != "Administrador"))) {
 			<td>' . $value["user_name"] . '</td>
 			<td>' . $value["administrador"] . '</td>
 
-			<td><a href="index.php?ruta=editar&id=' . $value["id"] . '"><button>Editar</button></a></td>
+			<td><a href="personas.php?editar=1&id=' . $value["id"] . '"><button style="background:green">Editar</button></a></td>
 			
-            <td><a href="index.php?ruta=empleados&idB=' . $value["id"] . '"><button>Borrar</a></button></td>
+            <td><a href="personas.php?eliminar=1&idB=' . $value["id"] . '"><button style="background:red">Borrar</button></a></td>
 		</tr>';
             }
             echo ' </tbody>
 
     </table>';
-
-
-            if ((isset($_GET["agregar"]) && ($_GET["agregar"] == 2))) {
-                echo "vamos a agregar";
-            }
+            desconectarDB($conn);
         }
     }
-    desconectarDB($conn);
+    if ((isset($_GET["agregar"]) && ($_GET["agregar"] == 2))) {
+        // echo "<h1>vamos a agregar</h1>";
+        echo '<form action="" method="POST" id="agregar">
+        <table>
+        <tr><h2>Agregar Persona</h2></tr>
+        <tr><td><label>Nombre:</label></td><td><input type="text" name="nombre" id="nombre" required></td>
+        <tr><td><label>Primer apellido:</label></td><td><input type="text" name="apellido1" id="apellido1" required></td>
+        <tr><td><label>Segundo apellido:</label></td><td><input type="text" name="apellido2" id="apellido2"></td>
+        <tr><td><label>DNI:</label></td><td><input type="text" name="dni" id="dni" required></td>
+        <tr><td><label>Teléfomo:</label></td><td><input type="text" name="telefono" id="telefono" required></td>
+        <tr><td><label>Fecha de Nacimiento:</label></td><td style="text-align:right"><input type="date" name="fecha_nacimiento" id="fecha_nacimiento" required></td>
+        <tr><td><label>Email:</label></td><td><input type="email" name="email" id="email"></td>
+        <tr><td><label>Nombre de Usuario:</label></td><td><input type="text" name="user_name" id="user_name" required></td>
+        <tr><td><label>Password:</label></td><td><input type="password" name="password" id="password" required></td>
+        <tr><td><label>administrador:</label></td><td style="text-align:center"><input type="checkbox" name="admin" id="admin" value="1"></td>
+        </tr>
+        </table>
+        <input type="submit" name="Agregar" style="background:green">
+
+        </form>';
+
+        if (isset($_POST["Agregar"])) {
+            if (isset($_POST["admin"])) {
+                $_POST["admin"] = 1;
+            } else {
+                $_POST["admin"] = 0;
+            }
+            $pass = md5($_POST["password"]);
+            $conn = conectarDB();
+            $sql = "INSERT INTO personas (nombre,apellido1,apellido2,dni,telefono,fecha_nacimiento,email,user_name,password,administrador)
+            VALUES ('{$_POST["nombre"]}', '{$_POST["apellido1"]}', '{$_POST["apellido2"]}', '{$_POST["dni"]}', '{$_POST["telefono"]}', '{$_POST["fecha_nacimiento"]}', '{$_POST["email"]}', '{$_POST["user_name"]}', '{$pass}', '{$_POST["admin"]}')";
+            echo '<div class="espaciador"></div>';
+            if (mysqli_query($conn, $sql)) {
+
+                echo '<div class="mensaje"><h1>New record created successfully</h1></div>';
+            } else {
+                echo '<div class="mensaje"><h1>"Error: " . $sql . "<br>" . mysqli_error($conn)</h1></div>';
+            }
+
+            unset($_POST);
+            desconectarDB($conn);
+        }
+    }
+
 
     ?>
 
