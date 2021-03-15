@@ -22,7 +22,7 @@ form#form1 {
   border-radius: 15px;
   padding-bottom: 10px;
 }
-form#agregar {
+form#agregar, form#bici{
   background: gray;
   display: flex;
   margin: 0 auto;
@@ -46,7 +46,8 @@ form#editar {
   border-radius: 15px;
   padding-bottom: 10px;
 }
-form#agregar h2 {
+form#agregar h2, form#bici h2 {
+  margin: 0px auto;
   padding: 10px 0;
 }
 form#editar h2 {

@@ -66,18 +66,82 @@ if (isset($_GET["listado"])) {
             echo ' </tbody>
 
     </table>';
+            
+
             desconectarDB($conn);
         
     }
     
 }
 
-
-
 }
+function select_marca(){
+    $sql = "SELECT id_marca, marca FROM marcas;";
+    $conn = conectarDB();
+    $result = mysqli_query($conn,$sql);
+   
+    while ($datos = mysqli_fetch_array($result)) {
+       echo '<option value="'.$datos["id_marca"].'">'.$datos["marca"].'</option>';
+    }
+    desconectarDB($conn);
+   }
 
+   function select_model(){
+    $sql = "SELECT id_modelo, modelo FROM modelos;";
+    $conn = conectarDB();
+    $result = mysqli_query($conn,$sql);
+   
+    while ($datos = mysqli_fetch_array($result)) {
+       echo '<option value="'.$datos["id_modelo"].'">'.$datos["modelo"].'</option>';
+    }
+    desconectarDB($conn);
+   }
 
 ?>
+
+<div class="espaciador"></div>
+
+<form action="" method="post" id="bici">
+<table>
+    <tr>
+        <td colspan="2"><h2>Agregar Bicicleta</h2></td>
+    </tr>
+    <tr>
+        <td><label for="marca">Marca:</label></td><td><select name="marca" required><?php select_marca()?></select></td>
+    </tr>
+    <tr>
+        <td><label for="modelo">Modelo:</label></td><td><select name="modelo" required><?php select_model()?></select></td>
+    </tr>
+    <tr>
+        <td><label for="color">Color:</label></td><td><input type="text" name="color" id="color" required></td>
+    </tr>
+
+</table><br>
+<input type="submit" value="Agregar" name="Agregar" style="background:green">
+</form>';
+
+<?php
+if (isset($_POST["Agregar"])) {
     
+    $conn = conectarDB();
+    $sql = "INSERT INTO bicicletas (id_marca,id_modelo,color)
+    VALUES ('{$_POST["marca"]}', '{$_POST["modelo"]}', '{$_POST["color"]}')";
+    echo '<div class="espaciador"></div>';
+    if (mysqli_query($conn, $sql)) {
+
+        echo '<div class="mensaje"><h1>New record created successfully</h1></div>';
+    } else {
+        echo '<div class="mensaje"><h1>"Error: " . $sql . "<br>" . mysqli_error($conn)</h1></div>';
+    }
+
+    unset($_POST);
+    desconectarDB($conn);
+}
+
+?>
+
+
+
+
 </body>
 </html>
