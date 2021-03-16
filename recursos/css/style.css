@@ -34,7 +34,7 @@ form#agregar, form#bici{
   border-radius: 15px;
   padding-bottom: 10px;
 }
-form#editar {
+form#editar, form#editar_bici {
   background: gray;
   display: flex;
   margin: 0 auto;

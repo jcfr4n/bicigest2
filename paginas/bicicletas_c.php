@@ -58,7 +58,7 @@ if (isset($_GET["listado"])) {
 			<td>' . $value["Modelo"] . '</td>
 			<td>' . $value["Color"] . '</td>
 
-			<td><a href="bicicletas.php?editar=1&id=' . $value["id"] . '"><button style="background:green">Editar</button></a></td>
+			<td><a href="bicicletas_c.php?editar=1&id=' . $value["id"] . '"><button style="background:green">Editar</button></a></td>
 			
             <td><a href="bicicletas.php?eliminar=1&idB=' . $value["id"] . '"><button style="background:red">Borrar</button></a></td>
 		</tr>';
@@ -136,6 +136,13 @@ if (isset($_POST["Agregar"])) {
 
     unset($_POST);
     desconectarDB($conn);
+}
+
+// Editar
+
+if ((isset($_GET["editar"])) && ($_GET["editar"] == 1)) {
+
+    include "bicicleta_edit.php";
 }
 
 ?>
